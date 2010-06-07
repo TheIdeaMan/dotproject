@@ -20,7 +20,7 @@ define( 'PERM_ALL', '-1' );
 function getReadableModule()
 {
 	global $AppUI;
-	$perms =& $AppUI->acl();
+	$perms = $AppUI->acl();
 
 	$sql = "SELECT mod_directory FROM modules WHERE mod_active > 0 ORDER BY mod_ui_order";
 	$modules = db_loadColumn( $sql );
@@ -86,7 +86,7 @@ function isAllowed($perm_type, $mod, $item_id = 0)
 function getPermission( $mod, $perm, $item_id = 0)
 {
 	// First check if the module is readable, i.e. has view permission.
-	$perms =& $GLOBALS['AppUI']->acl();
+	$perms = $GLOBALS['AppUI']->acl();
 	$result = $perms->checkModule($mod, $perm);
 	// If we have access then we need to ensure we are not denied access to the particular
 	// item.

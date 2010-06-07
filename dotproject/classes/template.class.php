@@ -66,7 +66,7 @@ class CTemplate extends Smarty
 	{
 		global $locale_char_set, $uistyle, $AppUI, $style_extras;
 		
-		$perms = & $AppUI->acl();
+		$perms = $AppUI->acl();
 		
 		$dialog = dPgetParam( $_GET, 'dialog', 0 );
 		if (!$dialog)
@@ -92,7 +92,7 @@ class CTemplate extends Smarty
 		// top navigation menu
 		if ($AppUI->user_id > 0) {
 			$nav = $AppUI->getMenuModules();
-			$perms =& $AppUI->acl();
+			$perms = $AppUI->acl();
 			$links = array();
 			
 			foreach ($nav as $module) {
@@ -196,8 +196,8 @@ class CTemplate extends Smarty
 	function displayPagination($currentPage, $totalRecords, $module = null)
 	{
 		// remove orderby's to prevent resorting
-		$pagination['url'] = ereg_replace('&orderby=[^&]+', '', $_SERVER['QUERY_STRING']);
-		$pagination['url'] = 'index.php?' . ereg_replace('&page=[^&]+', '', $pagination['url']);
+		$pagination['url'] = preg_replace('/&orderby=[^&]+/', '', $_SERVER['QUERY_STRING']);
+		$pagination['url'] = 'index.php?' . preg_replace('/&page=[^&]+/', '', $pagination['url']);
 		$pagination['url'] = str_replace('&', '&amp;', $pagination['url']);
 		// The current page
 		$pagination['page'] = $currentPage;

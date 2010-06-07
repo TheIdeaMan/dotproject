@@ -8,7 +8,7 @@ $tpl->assign('js', $extrajs);
 $project_id = intval( dPgetParam( $_GET, 'project_id', 0 ) );
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canRead = $perms->checkModuleItem( $m, 'view', $project_id );
 $canEdit = $perms->checkModuleItem( $m, 'edit', $project_id );
 $canEditT = $perms->checkModule( 'tasks', 'add');

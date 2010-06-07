@@ -55,15 +55,15 @@ $tasks['overdue'] = array();
 foreach($all_tasks as $task)
 {
 	if ($task['task_percent_complete'] == 100)
-		$tasks['completed'][] = & $task;
+		$tasks['completed'][] = $task;
 	else
 	{
 		if ($task['task_end_date'] < date('Y-m-d'))
-			$tasks['overdue'][] = & $task;
+			$tasks['overdue'][] = $task;
 		if ($task['task_percent_complete'] == 0)
-			$tasks['pending'][] = & $task;
+			$tasks['pending'][] = $task;
 		else
-			$tasks['inprogress'][] = & $task;
+			$tasks['inprogress'][] = $task;
 	}
 
 	if (isset($users_per_task[$task['task_id']]))
@@ -71,15 +71,15 @@ foreach($all_tasks as $task)
 		foreach($users_per_task[$task['task_id']] as $user)
 		{
 			if ($task['task_percent_complete'] == 100)
-				$users[$user]['completed'][] = & $task;
+				$users[$user]['completed'][] = $task;
 			else
 			{
 				if ($task['task_end_date'] < date('Y-m-d'))
-					$users[$user]['overdue'][] = & $task;
+					$users[$user]['overdue'][] = $task;
 				if ($task['task_percent_complete'] == 0)
-					$users[$user]['pending'][] = & $task;
+					$users[$user]['pending'][] = $task;
 				else
-					$users[$user]['inprogress'][] = & $task;
+					$users[$user]['inprogress'][] = $task;
 			}
 
 			

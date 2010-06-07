@@ -22,8 +22,8 @@ if ( isset($_GET['event_id']) && !($_GET['event_id']=='') ) {
 	$q->loadObject($event);	
 	$q->clear();
 
-	$start_date =& new CDate($event->event_start_date);
-	$end_date =& new CDate($event->event_end_date);	
+	$start_date = new CDate($event->event_start_date);
+	$end_date = new CDate($event->event_end_date);	
 	
 	// create vEvent String	
 	$v = new vCalendar;

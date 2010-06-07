@@ -86,7 +86,7 @@ class CProject extends CDpObject {
 	function canDelete( &$msg, $oid=null ) {
 		// TODO: check if user permissions are considered when deleting a project
 		global $AppUI;
-		$perms =& $AppUI->acl();
+		$perms = $AppUI->acl();
         
 		return $perms->checkModuleItem('projects', 'delete', $oid);
 	}

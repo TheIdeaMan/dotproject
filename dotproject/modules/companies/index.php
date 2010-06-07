@@ -14,7 +14,7 @@ if (isset( $_GET['orderby'] )) {
 $orderby         = $AppUI->getState( 'CompIdxOrderBy' ) ? $AppUI->getState( 'CompIdxOrderBy' ) : 'company_name';
 $orderdir        = $AppUI->getState( 'CompIdxOrderDir' ) ? $AppUI->getState( 'CompIdxOrderDir' ) : 'asc';
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $filters_selection = array('company_owner' => $perms->getPermittedUsers('companies'));
 
 // load the company types

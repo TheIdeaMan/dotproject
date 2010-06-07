@@ -75,7 +75,7 @@ class CUser extends CDpObject {
 		if( !$ret ) {
 			return get_class( $this ).'::store failed <br />' . db_error();
 		} else {
-			$acl =& $GLOBALS['AppUI']->acl();
+			$acl = $GLOBALS['AppUI']->acl();
 			$acl->$perm_func($this->user_id, $this->user_username);
 			//Insert Default Preferences
 			//Lets check if the user has already default users preferences set, if not insert the default ones
@@ -115,7 +115,7 @@ class CUser extends CDpObject {
 		$id = $this->user_id;
 		$result = parent::delete($oid);
 		if (! $result) {
-			$acl =& $GLOBALS['AppUI']->acl();
+			$acl = $GLOBALS['AppUI']->acl();
 			$acl->deleteLogin($id);
 			$q  = new DBQuery;
 			$q->setDelete('user_preferences');

@@ -275,7 +275,7 @@ class CTask extends CDpObject {
         $modified_task = new CTask();
         
         if ( $fromChildren ){
-            $modified_task = &$this;
+            $modified_task = $this;
         } 
         else {
             $modified_task->load($this->task_parent);
@@ -456,7 +456,7 @@ class CTask extends CDpObject {
         }
         
         if (!empty($children)) {
-            $tempTask = & new CTask();
+            $tempTask = new CTask();
             foreach ($children as $child) {
                 $tempTask->load($child);
                 $newChild = $tempTask->deepCopy($destProject_id, $new_id, $newParent_id);
@@ -493,7 +493,7 @@ class CTask extends CDpObject {
         }
         
         if (!empty($children)) {
-            $tempChild = & new CTask();
+            $tempChild = new CTask();
             foreach ($children as $child) {
                 $tempChild->load($child);
                 $tempChild->move($destProject_id);
@@ -1028,7 +1028,7 @@ class CTask extends CDpObject {
         global $AppUI, $locale_char_set;
         
         $mail_recipients = array();
-        $q =& new DBQuery;
+        $q = new DBQuery;
         if (isset($assignees) && $assignees == 'on') {
             $q->clear();
             $q->addTable('user_tasks', 'ut');
@@ -1042,7 +1042,7 @@ class CTask extends CDpObject {
             $q->addQuery('c.contact_first_name');
             $q->addQuery('c.contact_last_name');
             $q->addWhere('ua.user_id <> ' . $AppUI->user_id);
-            $req =& $q->exec(QUERY_STYLE_NUM);
+            $req = $q->exec(QUERY_STYLE_NUM);
             for($req; ! $req->EOF; $req->MoveNext()) {
                 list($email, $first, $last) = $req->fields;
                 if (! isset($mail_recipients[$email]))
@@ -1060,7 +1060,7 @@ class CTask extends CDpObject {
             $q->addQuery('c.contact_first_name');
             $q->addQuery('c.contact_last_name');
             $q->addWhere('u.user_id <> ' . $AppUI->user_id);
-            $req =& $q->exec(QUERY_STYLE_NUM);
+            $req = $q->exec(QUERY_STYLE_NUM);
             for ($req; ! $req->EOF; $req->MoveNext()) {
                 list($email, $first, $last) = $req->fields;
                 if (! isset($mail_recipients[$email]))
@@ -1078,7 +1078,7 @@ class CTask extends CDpObject {
             $q->addQuery('c.contact_first_name');
             $q->addQuery('c.contact_last_name');
             $q->addWhere('u.user_id <> ' . $AppUI->user_id);
-            $req =& $q->exec(QUERY_STYLE_NUM);
+            $req = $q->exec(QUERY_STYLE_NUM);
             for ($req; ! $req->EOF; $req->MoveNext()) {
                 list($email, $first, $last) = $req->fields;
                 if (! isset($mail_recipients[$email]))
@@ -1095,7 +1095,7 @@ class CTask extends CDpObject {
                 $q->addQuery('c.contact_email');
                 $q->addQuery('c.contact_first_name');
                 $q->addQuery('c.contact_last_name');
-                $req =& $q->exec(QUERY_STYLE_NUM);
+                $req = $q->exec(QUERY_STYLE_NUM);
                 for ($req; ! $req->EOF; $req->MoveNext()) {
                     list($email, $first, $last) = $req->fields;
                     if (! isset($mail_recipients[$email]))
@@ -1138,7 +1138,7 @@ class CTask extends CDpObject {
             $q->addTable('tasks');
             $q->addQuery('task_name');
             $q->addWhere('task_id = ' . $this->task_parent);
-            $req =& $q->exec(QUERY_STYLE_NUM);
+            $req = $q->exec(QUERY_STYLE_NUM);
             if ($req) {
                 $body .= $AppUI->_('Parent Task', UI_OUTPUT_RAW).': '.$req->fields[0]."\n";
             }
@@ -1781,7 +1781,7 @@ class CTask extends CDpObject {
         //$users = db_loadHashList($sql, $hash);
         $users = $q->loadHashList();
         
-        $perms = & $AppUI->acl();
+        $perms = $AppUI->acl();
         foreach($users as $key => $user_data) {
             if ($perms->isUserPermitted($user_data['user_id']) != true) {
                 unset($users[$key]);
@@ -1851,7 +1851,7 @@ class CTask extends CDpObject {
         
         if ($children) {
             $deep_children = array();
-            $tempTask = &new CTask();
+            $tempTask = new CTask();
             foreach ($children as $child) {
                 $tempTask->load($child);
                 $deep_children = array_merge($deep_children, $this->getChildren());
@@ -2194,7 +2194,7 @@ class CTask extends CDpObject {
     
 	function search($keyword) {
 		global $AppUI;
-		$perms = &$AppUI->acl();
+		$perms = $AppUI->acl();
 		$list = parent::search($keyword);
 		
 		$q = new DBQuery();
@@ -2260,7 +2260,7 @@ class CTaskLog extends CDpObject {
         global $AppUI;
         
         // First things first.  Are we allowed to delete?
-        $acl =& $AppUI->acl();
+        $acl = $AppUI->acl();
         if ( ! $acl->checkModuleItem('task_log', 'delete', $oid)) {
             $msg = $AppUI->_( 'noDeletePermission' );
             return false;
@@ -2368,7 +2368,7 @@ function showtask( &$a, $level=0, $is_opened = true, $today_view = false) {
     $now = new CDate();
     $df = $AppUI->getPref('SHDATEFORMAT');
     $df .= ' ' . $AppUI->getPref('TIMEFORMAT');
-    $perms =& $AppUI->acl();
+    $perms = $AppUI->acl();
     $show_all_assignees = dPgetConfig('show_all_task_assignees') ? true : false;
     
     $done[] = $a['task_id'];

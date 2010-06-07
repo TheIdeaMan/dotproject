@@ -32,7 +32,7 @@ if ($file_id) {
 			
   if ($del)
   {
-    $acl =& $AppUI->acl();
+    $acl = $AppUI->acl();
     if ( ! $acl->checkModule('files', 'delete')) 
 		{
       $AppUI->setMsg($AppUI->_( "noDeletePermission" ));

@@ -7,7 +7,7 @@ $AppUI->savePlace();
 $sort = dPgetParam($_REQUEST, 'sort', 'asc');
 $forum_id = dPgetParam($_REQUEST, 'forum_id', 0);
 $message_id = dPgetParam($_REQUEST, 'message_id', 0);
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 if ( ! $perms->checkModuleItem('forums', 'view', $message_id))
 	$AppUI->redirect("m=public&a=access_denied");
@@ -61,7 +61,7 @@ $temp_dir = DP_BASE_DIR . '/files/temp';
 $base_url  = DB_BASE_URL;
 require( $AppUI->getLibraryClass( 'ezpdf/class.ezpdf' ) );
 
-$pdf = &new Cezpdf($paper='A4', $orientation='portrait');
+$pdf = new Cezpdf($paper='A4', $orientation='portrait');
 $pdf->ezSetCmMargins(1, 2, 1.5, 1.5);
 $pdf->selectFont($font_dir . '/Helvetica.afm');
 $pdf->ezText('Project: ' . $forum['project_name']. '   Forum: '.$forum['forum_name'] );

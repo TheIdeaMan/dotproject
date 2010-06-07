@@ -13,7 +13,7 @@ require_once( $AppUI->getModuleClass( 'tasks' ) );
 $companies = new CCompany();
 $projects = new CProject();
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $tasks_filters_selection = array(
 //'tasks_company' => $companies->getAllowedRecords($AppUI->user_id, 'company_id, company_name', 'company_name'),
 'task_owner' => $perms->getPermittedUsers('calendar'),

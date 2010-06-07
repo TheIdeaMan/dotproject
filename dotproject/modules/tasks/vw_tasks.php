@@ -118,9 +118,9 @@ $AppUI->setState('tso2_'.$project_id, $task_sort_order2);
 
 $where = '';
 require_once $AppUI->getModuleClass('projects');
-$project =& new CProject;
+$project = new CProject;
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canViewTask = $perms->checkModule('tasks', 'view');
 
 $q->clear();
@@ -188,7 +188,7 @@ $tasks_filter = '';
 
 // TODO: Enable tasks filtering
 
-$obj =& new CTask;
+$obj = new CTask;
 $allowedTasks = $obj->getAllowedSQL($AppUI->user_id);
 if ( count($allowedTasks))
 	$q->addWhere($allowedTasks);

@@ -29,7 +29,7 @@ function smarty_function_dPunsetArrayValue($params, &$smarty)
     }
 
     global $$a; // $a is the array name string, $$a the array itself
-    $b =& $$a;  // redefine by reference
+    $b = $$a;  // redefine by reference
     unset($b[$k]); // unset the wished value
 		$tpl->assign($a, $$a); // reassign the reduced array to smarty
 }

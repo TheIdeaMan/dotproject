@@ -223,7 +223,7 @@ function Cpdf ($pageSize=array(0,0,612,792)){
 */
 function o_destination($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch($action){
     case 'new':
@@ -258,7 +258,7 @@ function o_destination($id,$action,$options=''){
 */
 function o_viewerPreferences($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -296,7 +296,7 @@ function o_viewerPreferences($id,$action,$options=''){
 */
 function o_catalog($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -346,7 +346,7 @@ function o_catalog($id,$action,$options=''){
 */
 function o_pages($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -444,7 +444,7 @@ function o_pages($id,$action,$options=''){
 */
 function o_outlines($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -474,7 +474,7 @@ function o_outlines($id,$action,$options=''){
 */
 function o_font($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -558,7 +558,7 @@ function o_font($id,$action,$options=''){
 */
 function o_fontDescriptor($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -609,7 +609,7 @@ function o_fontDescriptor($id,$action,$options=''){
 */
 function o_fontEncoding($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -646,7 +646,7 @@ function o_fontEncoding($id,$action,$options=''){
 */
 function o_procset($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -681,7 +681,7 @@ function o_procset($id,$action,$options=''){
 */
 function o_info($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -725,7 +725,7 @@ function o_info($id,$action,$options=''){
 */
 function o_action($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -768,7 +768,7 @@ function o_action($id,$action,$options=''){
 */
 function o_annotation($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -820,7 +820,7 @@ function o_annotation($id,$action,$options=''){
 */
 function o_page($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -889,7 +889,7 @@ function o_page($id,$action,$options=''){
 */
 function o_contents($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch ($action){
     case 'new':
@@ -939,7 +939,7 @@ function o_contents($id,$action,$options=''){
 */
 function o_image($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch($action){
     case 'new':
@@ -1014,7 +1014,7 @@ function o_image($id,$action,$options=''){
 */
 function o_encryption($id,$action,$options=''){
   if ($action!='new'){
-    $o =& $this->objects[$id];
+    $o = $this->objects[$id];
   }
   switch($action){
     case 'new':
@@ -1231,7 +1231,7 @@ function output($debug=0){
   $this->checkAllHere();
 
   $xref=array();
-  $content="%PDF-1.3\n%âãÏÓ\n";
+  $content="%PDF-1.3\n%ï¿½ï¿½ï¿½ï¿½\n";
 //  $content="%PDF-1.3\n";
   $pos=strlen($content);
   foreach($this->objects as $k=>$v){

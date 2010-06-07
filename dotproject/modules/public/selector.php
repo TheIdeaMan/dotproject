@@ -28,12 +28,12 @@ $modclass = $AppUI->getModuleClass($table);
 if ($modclass && file_exists ($modclass))
 	require_once $modclass;
 
-$q =& new DBQuery;
+$q = new DBQuery;
 $q->addTable($table, 'a');
 
 switch ($table) {
 case 'companies':
-	$obj =& new CCompany;
+	$obj = new CCompany;
 	$title = 'Company';
 	$q->addQuery('company_id, company_name');
 	$q->addOrder('company_name');
@@ -45,7 +45,7 @@ case 'departments':
 	$company_id = dPgetParam( $_GET, 'company_id', 0 );
 	//$ok &= $company_id;  // Is it safe to delete this line ??? [kobudo 13 Feb 2003]
 	//$where = selPermWhere( 'companies', 'company_id' );
-	$obj =& new CDepartment;
+	$obj = new CDepartment;
 	$q->addWhere( selPermWhere( $obj, 'dept_id', 'dept_name' ));
 	$q->addWhere( "dept_company = company_id ");
 	$q->addTable('companies', 'b');
@@ -79,7 +79,7 @@ case 'projects':
 	$project_company = dPgetParam( $_GET, 'project_company', 0 );
 
 	$title = 'Project';
-	$obj =& new CProject;
+	$obj = new CProject;
 	$q->addQuery('a.project_id, project_name');
 	$q->addOrder('project_name');
 	if ($user_id > 0) {

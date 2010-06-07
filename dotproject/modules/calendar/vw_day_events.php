@@ -9,7 +9,7 @@ global $this_day, $first_time, $last_time, $company_id, $event_filter, $event_fi
 $types = dPgetSysVal( 'EventType' );
 $links = array();
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $user_id = $AppUI->user_id;
 $other_users = false;
 $no_modify = false;

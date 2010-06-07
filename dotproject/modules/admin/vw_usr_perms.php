@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 global $AppUI, $user_id, $canEdit, $canDelete, $tab, $tpl;
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $module_list = $perms->getModuleList();
 $pgos = array();
 $q  = new DBQuery;

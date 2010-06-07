@@ -101,7 +101,7 @@ class CForum extends CDpObject {
 	function search($keyword)
 	{
 		global $AppUI;
-		$perms = &$AppUI->acl();
+		$perms = $AppUI->acl();
 		$list = parent::search($keyword);
 		
 		$q = new DBQuery();

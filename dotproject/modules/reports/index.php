@@ -25,7 +25,7 @@ $end_date = intval( $log_end_date ) ? new CDate( $log_end_date ) : new CDate();
 $end_date->setTime( 23, 59, 59 );
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $canRead = $perms->checkModuleItem( $m, 'view', $project_id );
 if (!$canRead) {

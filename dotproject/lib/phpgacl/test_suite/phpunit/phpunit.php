@@ -221,7 +221,7 @@ class TestCase extends Assert /* implements Test */ {
   function runTest() {
     if (phpversion() >= '4') {
 	global $PHPUnit_testRunning;
-	eval('$PHPUnit_testRunning[0] = & $this;');
+	eval('$PHPUnit_testRunning[0] = $this;');
 	// Saved ref to current TestCase, so that the error handler
 	// can access it.  This code won't even parse in PHP3, so we
 	// hide it in an eval.

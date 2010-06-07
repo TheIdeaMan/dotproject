@@ -12,7 +12,7 @@ if ($check == 1000) {
 	$show_all_projects = true;
 }
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $df = $AppUI->getPref('SHDATEFORMAT');
 foreach ($projects as $k => $row) {
 	if (! $perms->checkModuleItem('projects', 'view', $row['project_id'])) {

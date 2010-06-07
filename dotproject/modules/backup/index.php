@@ -15,11 +15,11 @@ if (!defined('DP_BASE_DIR')){
  *   Added localisation code so that it can be translated.
  */ 
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! $perms->checkModule('backup', 'view'))	// Should we have an exec permission?
 	$AppUI->redirect("m=public&a=access_denied");
 
-$title =& new CTitleBlock('Backup Database', 'companies.gif', $m, $m .'.'.$a);
+$title = new CTitleBlock('Backup Database', 'companies.gif', $m, $m .'.'.$a);
 $title->addCrumb('index.php?m=backup&a=restore', 'restore xml file');
 $title->show();
 

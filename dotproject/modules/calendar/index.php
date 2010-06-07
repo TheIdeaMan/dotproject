@@ -14,7 +14,7 @@ require_once( $AppUI->getModuleClass( 'tasks' ) );
 $companies = new CCompany();
 $projects = new CProject();
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $tasks_filters_selection = array(
 'task_owner' => $perms->getPermittedUsers('calendar'),
 'task_project' => arrayMerge( array( '-1'=>$AppUI->_('Personal Calendar'), '0'=>$AppUI->_('Unspecified Calendar') ) , $projects->getAllowedRecords($AppUI->user_id, 'project_id, project_name', 'project_name')),

@@ -20,7 +20,7 @@ function getTaskLinks( $startPeriod, $endPeriod, &$links, $strMaxLen, $filters )
 	$tf = $AppUI->getPref('TIMEFORMAT');
 	
 	// Check permissions.
-	$perms = & $AppUI->acl();
+	$perms = $AppUI->acl();
 	$canView = $perms->checkModule( 'calendar', 'view', $event_id );
 	if (!$canView)
 		return array();

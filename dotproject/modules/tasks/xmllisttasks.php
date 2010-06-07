@@ -20,7 +20,7 @@
 	
 		$q->addWhere("task_project = $project_id");
 
-		$obj =& new CTask;
+		$obj = new CTask;
 		$allowedTasks = $obj->getAllowedSQL($AppUI->user_id);
 		if ( count($allowedTasks))
 			$q->addWhere($allowedTasks);

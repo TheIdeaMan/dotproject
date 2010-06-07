@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 // Copyright 2007 dotProject dev team <core-developer@dotproject.net>
 $resource_id = intval(dPgetParam($_GET, "resource_id", null));
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canDelete = $perms->checkModuleItem('resources', 'delete', $resource_id);
 $canView = $perms->checkModuleItem('resources', 'view', $resource_id);
 if ( (! $resource_id && ! $perms->checkModule('resources', 'add'))
@@ -13,14 +13,14 @@ if ( (! $resource_id && ! $perms->checkModule('resources', 'add'))
   $AppUI->redirect('m=public&a=access_denied');
 }
 
-$obj =& new CResource;
+$obj = new CResource;
 if ($resource_id && ! $obj->load($resource_id)) {
   $AppUI->setMsg('Resource');
   $AppUI->setMsg('invalidID', UI_MSG_ERROR, true);
   $AppUI->redirect();
 }
 
-$titleBlock =& new CTitleBlock(
+$titleBlock = new CTitleBlock(
   ($resource_id ? "Edit Resource" : "Add Resource"),
   'handshake.png', $m, "$m.$a"
 );

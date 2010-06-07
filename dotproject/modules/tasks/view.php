@@ -17,8 +17,8 @@ $canReadModule = !getDenyRead( $m );
 if (!$canRead) {
 	$AppUI->redirect( 'm=public&a=access_denied' );
 }
-$q =& new DBQuery;
-$perms =& $AppUI->acl();
+$q = new DBQuery;
+$perms = $AppUI->acl();
 // check permissions
 if ( $task_id ) {
 	// we are editing an existing task

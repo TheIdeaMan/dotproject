@@ -59,8 +59,8 @@ if (isset( $_GET['hide_complete'] )) {
 }
 $hide_complete = $AppUI->getState( 'ProjectsTaskLogsHideComplete' );
 
-$perms =& $AppUI->acl();
-$project =& new CProject;
+$perms = $AppUI->acl();
+$project = new CProject;
 
 // Pull the task comments
 $q->addTable('task_log');

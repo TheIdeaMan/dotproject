@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 global $AppUI, $obj, $percent, $can_edit_time_information, $tpl;
 
 $task_id = intval( dPgetParam( $_GET, 'task_id', 0 ) );
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // check permissions
 $canEdit = $perms->checkModuleItem( 'task_log', 'edit', $task_id );
@@ -32,7 +32,7 @@ $task->load($task_id);
 if (! $task->canAccess($AppUI->user_id))
 	$AppUI->redirect('m=public&a=access_denied');
 
-$proj = &new CProject();
+$proj = new CProject();
 $proj->load($obj->task_project);
 
 $q = new DBQuery;
@@ -66,7 +66,7 @@ $taskLogReference = dPgetSysVal( 'TaskLogReference' );
 				$q->addWhere('tc.task_id = '.$task_id);
 				$q->addQuery('tc.contact_id');
 				$q->addQuery('c.contact_first_name, c.contact_last_name');
-				$req =& $q->exec();
+				$req = $q->exec();
 				$cid = array();
 				for ($req; ! $req->EOF; $req->MoveNext()) {
 					$cid[] = $req->fields['contact_id'];
@@ -81,7 +81,7 @@ $taskLogReference = dPgetSysVal( 'TaskLogReference' );
 				$q->addWhere('pc.project_id = '.$obj->task_project);
 				$q->addQuery('pc.contact_id');
 				$q->addQuery('c.contact_first_name, c.contact_last_name');
-				$req =& $q->exec();
+				$req = $q->exec();
 				$cid = array();
 				$proj_email_title = array();
 				for ($req; ! $req->EOF; $req->MoveNext()) {

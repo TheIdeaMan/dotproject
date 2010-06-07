@@ -4,7 +4,7 @@ if (!defined('DP_BASE_DIR')){
 }
 
 $AppUI->savePlace();
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 // retrieve any state parameters
 global $user_id;
 $user_id = $AppUI->user_id;

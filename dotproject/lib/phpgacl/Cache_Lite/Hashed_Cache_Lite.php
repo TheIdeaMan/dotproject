@@ -55,7 +55,7 @@ class Hashed_Cache_Lite extends Cache_Lite
         $this->_group = $group;
 
         if ($this->_caching) {
-			if (!empty($this->_memoryCache[$group.'-'.$id])) {
+			if ($this->_memoryCache[$group.'-'.$id]) {
 				return ($this->_memoryCache[$group.'-'.$id]);
 			} else {
 				$this->_setFileName($id, $group);
@@ -106,16 +106,10 @@ class Hashed_Cache_Lite extends Cache_Lite
     */
     function _create_dir_structure($dir)
     {
-        if (!@file_exists($dir)) {
-            $dir_parts = preg_split('!\\'.DIR_SEP.'+!', $dir, -1, PREG_SPLIT_NO_EMPTY);
-            $new_dir = ($dir{0} == DIR_SEP) ? DIR_SEP : '';
-            foreach ($dir_parts as $dir_part) {
-                $new_dir .= $dir_part;
-                if (!file_exists($new_dir) && !mkdir($new_dir, 0771)) {
-					Cache_Lite::raiseError('Cache_Lite : problem creating directory \"$dir\" !', -3);   
-                    return false;
-                }
-                $new_dir .= DIR_SEP;
+		if (!@file_exists($dir)) {
+			Hashed_Cache_Lite::_create_dir_structure(dirname($dir));
+			if (!mkdir($dir, 0771)) {
+				Cache_Lite::raiseError("Cache_Lite : problem creating directory \"$dir\" !", -3);
             }
         }
     }

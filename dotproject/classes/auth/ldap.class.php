@@ -198,7 +198,7 @@ if (!defined('DP_BASE_DIR')){
 			$this->user_id = $user_id;
 			$q->clear();
 
-			$acl =& $AppUI->acl();
+			$acl = $AppUI->acl();
 			$acl->insertUserRole($acl->get_group_id('anon'), $this->user_id);
 		}
 

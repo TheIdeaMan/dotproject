@@ -22,7 +22,7 @@ $f = defVal( @$_REQUEST['f'], 0 );
 $df = $AppUI->getPref('SHDATEFORMAT');
 
 require_once $AppUI->getModuleClass('projects');
-$project =& new CProject;
+$project = new CProject;
 $criticalTasks = ($project_id > 0) ? $project->getCriticalTasks($project_id) : NULL;
 
 // pull valid projects and their percent complete information
@@ -128,7 +128,7 @@ if ($caller == 'todo') {
 }
 
 // get any specifically denied tasks
-$task =& new CTask;
+$task = new CTask;
 $task->setAllowedSQL($AppUI->user_id, $q);
 
 $proTasks = $q->loadHashList('task_id');
@@ -189,7 +189,7 @@ function findgchild( &$tarr, $parent, $level=0 ){
 }
 
 reset($projects);
-//$p = &$projects[$project_id];
+//$p = $projects[$project_id];
 foreach ($projects as $p) {
 	$tnums = count( $p['tasks'] );
 
@@ -532,4 +532,3 @@ $vline->title->SetFont(FF_CUSTOM,FS_BOLD,10);
 
 $graph->Add($vline);
 $graph->Stroke();
-?>

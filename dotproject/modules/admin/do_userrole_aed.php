@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 $del = dPgetParam($_REQUEST, 'del', false);
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // prepare (and translate) the module name ready for the suffix
 $AppUI->setMsg( 'Roles' );

@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 $company_id = intval( dPgetParam( $_GET, "company_id", 0 ) );
 
 // check permissions for this company
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 // If the company exists we need edit permission,
 // If it is a new company we need add permission on the module.
 if ($company_id)
@@ -35,7 +35,7 @@ $q->clear();
 
 $obj = null;
 if (!db_loadObject( $sql, $obj ) && $company_id > 0) {
-	// $AppUI->setMsg( '	$qid =& $q->exec(); Company' ); // What is this for?
+	// $AppUI->setMsg( '	$qid = $q->exec(); Company' ); // What is this for?
 	$AppUI->setMsg( "invalidID", UI_MSG_ERROR, true );
 	$AppUI->redirect();
 }

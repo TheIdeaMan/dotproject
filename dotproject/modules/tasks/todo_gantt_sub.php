@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 global $showEditCheckbox, $tasks, $priorities, $m, $a, $date, $min_view, $other_users, $showPinned, $showArcProjs, $showHoldProjs, $showDynTasks, $showLowTasks, $showEmptyDate, $user_id;
 global $tpl;
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canDelete = $perms->checkModuleItem($m, 'delete');
 
 $users = dPgetUsers();

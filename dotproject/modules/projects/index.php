@@ -8,7 +8,7 @@ $AppUI->savePlace();
 // load the companies class to retrieved denied companies
 require_once( $AppUI->getModuleClass( 'companies' ) );
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $companies = new CCompany();
 $filters_selection = array(
@@ -90,7 +90,7 @@ $obj = new CProject();
 $deny = $obj->getDeniedRecords( $AppUI->user_id );
 
 // collect the full projects list data via function in projects.class.php
-$projects = & projects_list_data();
+$projects = projects_list_data();
 
 $project_types = dPgetSysVal("ProjectStatus");
 

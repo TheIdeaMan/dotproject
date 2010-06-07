@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 $del = dPgetParam($_POST, 'del', 0);
 
-$obj =& $AppUI->acl();
+$obj = $AppUI->acl();
 
 $AppUI->setMsg( 'Permission' );
 if ($del) {

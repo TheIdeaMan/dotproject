@@ -1885,11 +1885,11 @@ class Smarty
      * @return array
      */
     function &_smarty_cache_attrs($cache_serial, $count) {
-        $_cache_attrs =& $this->_cache_info['cache_attrs'][$cache_serial][$count];
+        $_cache_attrs = $this->_cache_info['cache_attrs'][$cache_serial][$count];
 
         if ($this->_cache_including) {
             /* return next set of cache_attrs */
-            $_return =& current($_cache_attrs);
+            $_return = current($_cache_attrs);
             next($_cache_attrs);
             return $_return;
 

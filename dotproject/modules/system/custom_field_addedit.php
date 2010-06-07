@@ -44,7 +44,7 @@ if ($select_delitem != NULL)
 	}
 
 	unset($select_items);
-	$select_items = &$new_selectitems;
+	$select_items = $new_selectitems;
 }
 
 // Loading the page for the first time
@@ -58,7 +58,7 @@ if (dpGetParam($_GET, "field_id", NULL) != NULL)
 		$AppUI->redirect();
 	}
 
-	$cf =& $custom_fields->fieldWithId( $field_id );
+	$cf = $custom_fields->fieldWithId( $field_id );
 
 	if (is_object($cf))
 	{

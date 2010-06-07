@@ -8,7 +8,7 @@ if (!defined('DP_BASE_DIR')){
  */
 
 $forum_id = intval( dPgetParam( $_GET, 'forum_id', 0 ) );
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // check permissions for this record
 $canAdd = $perms->checkModule( $m, 'add');
@@ -22,7 +22,7 @@ require_once( $AppUI->getModuleClass( 'projects' ) );
 $forum_id = intval( dPgetParam( $_GET, 'forum_id', 0 ) );
 
 //Pull forum information
-$q =& new DBQuery;
+$q = new DBQuery;
 $q->addTable('forums');
 $q->addWhere('forums.forum_id = ' . $forum_id);
 $res = $q->exec();
@@ -35,7 +35,7 @@ $status = isset( $forum_info['forum_status'] ) ? $forum_info['forum_status'] : -
 $projObj = new CProject();
 
 //Pull project Information
-$q =& new DBQuery;
+$q = new DBQuery;
 $q->addTable('projects');
 $q->addQuery('project_id, project_name');
 $q->addWhere('project_status != 7');
@@ -46,8 +46,8 @@ if (isset($company_id))
 $projects = array( '0' => '&nbsp;' ) + $q->loadHashList();
 echo db_error();
 
-$perms =& $AppUI->acl();
-$permittedUsers =& $perms->getPermittedUsers();
+$perms = $AppUI->acl();
+$permittedUsers = $perms->getPermittedUsers();
 $users = array( '0' => '&nbsp;' ) + $permittedUsers;
 // setup the title block
 $ttl = $forum_id > 0 ? 'Edit Forum' : 'Add Forum';

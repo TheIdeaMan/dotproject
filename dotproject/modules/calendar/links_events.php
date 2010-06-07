@@ -37,7 +37,7 @@ function getEventLinks( $startPeriod, $endPeriod, &$links, $strMaxLen ) {
 	global $event_filter, $AppUI, $event_id, $df, $tf;
 		
 	// Check permissions.
-	$perms = & $AppUI->acl();
+	$perms = $AppUI->acl();
 	$canView = $perms->checkModule( 'calendar', 'view', $event_id );
 	if (!$canView)
 		return array();
@@ -94,7 +94,7 @@ function getExternalWebcalEventLinks( $startPeriod, $endPeriod, &$links, $strMax
 	global $df, $event_filter, $AppUI, $recurs, $types, $event_id;
 		
 	// Check permissions.
-	$perms = & $AppUI->acl();
+	$perms = $AppUI->acl();
 	$canView = $perms->checkModule( 'calendar', 'view', $event_id );
 	if (!$canView)
 		return array();

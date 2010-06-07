@@ -21,7 +21,7 @@ function dplink_user_main()
 	list($dbconn) = pnDBGetConn();
 	$pntables = pnDBGetTables();
 	$usertable = $pntables['users'];
-	$usercol =& $pntables['users_column'];
+	$usercol = $pntables['users_column'];
 	$sql = "SELECT $usercol[uname], 
 	  $usercol[pass],
 		$usercol[name],

@@ -7,7 +7,7 @@ $project_id = intval(dPgetParam($_GET, 'project_id', 0));
 $company_id = intval(dPgetParam($_GET, 'company_id', 0));
 $contact_id = intval(dPgetParam($_GET, 'contact_id', 0));
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 // check permissions for this record
 $canEdit = $perms->checkModuleItem($m, 'edit', $project_id);
 $canAuthor = $perms->checkModuleItem($m, 'add');
@@ -88,7 +88,7 @@ if( $AppUI->isActiveModule('departments')) {
 	$company_id = $row->project_company;
 	$selected_departments = array();
 	if ($project_id) {
-		$q =& new DBQuery();
+		$q = new DBQuery();
 		$q->addTable('project_departments');
 		$q->addQuery('department_id');
 		$q->addWhere('project_id = ' . $project_id);
@@ -112,11 +112,11 @@ $department_selection_list = null;
 // Get contacts list
 $selected_contacts = array();
 if ($project_id) {
-	$q =& new DBQuery();
+	$q = new DBQuery();
 	$q->addTable('project_contacts');
 	$q->addQuery('contact_id');
 	$q->addWhere('project_id = ' . $project_id);
-	$res =& $q->exec();
+	$res = $q->exec();
 	for ( $res; ! $res->EOF; $res->MoveNext())
 		$selected_contacts[] = $res->fields['contact_id'];
 	$q->clear();

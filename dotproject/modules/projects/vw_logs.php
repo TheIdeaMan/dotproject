@@ -112,8 +112,8 @@ function delIt2(id) {
 </tr>
 <?php
 // Winnow out the tasks we are not allowed to view.
-$perms =& $AppUI->acl();
-$project =& new CProject;
+$perms = $AppUI->acl();
+$project = new CProject;
 
 // Pull the task comments
 $q  = new DBQuery;

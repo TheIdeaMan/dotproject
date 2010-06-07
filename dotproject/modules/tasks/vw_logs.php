@@ -7,7 +7,7 @@ global $AppUI, $df, $canEdit, $m, $tpl;
 
 $task_id = intval( dPgetParam( $_GET, 'task_id', 0 ) );
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! $perms->checkModuleItem('task_log', 'view', $task_id)) {
 	$AppUI->redirect('m=public&a=access_denied');
 }

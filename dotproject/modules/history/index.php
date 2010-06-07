@@ -132,7 +132,7 @@ foreach ($history as $key => $row)
 	$row['history_table'] = $module;
 	$history[$key]['history_display'] = show_history($row);
 
-	$perms = & $AppUI->acl();
+	$perms = $AppUI->acl();
   if ($module != 'login' && !$perms->checkModuleItem($module, "access", $row['history_item']))
   	unset($history[$key]);
 }

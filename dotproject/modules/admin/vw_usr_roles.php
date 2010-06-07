@@ -9,9 +9,9 @@ global $AppUI, $user_id, $canEdit, $canDelete, $tab, $tpl;
 // Create the roles class container
 require_once(DP_BASE_DIR . '/modules/system/roles/roles.class.php');
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $user_roles = $perms->getUserRoles($user_id);
-$crole =& new CRole;
+$crole = new CRole;
 $roles = $crole->getRoles();
 // Format the roles for use in arraySelect
 $roles_arr = array();

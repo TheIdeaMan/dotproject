@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 $file_id = intval( dPgetParam( $_GET, 'file_id', 0 ) );
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $canEdit = $perms->checkModuleItem( $m, "edit", $file_id );
 if (!$canEdit) {

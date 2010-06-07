@@ -12,7 +12,7 @@ if (array_key_exists( 'helpdesk', $AppUI->getInstalledModules() )) {
 	require_once( $AppUI->getModuleClass( 'helpdesk' ) );
 }
 include_once DP_BASE_DIR.'modules/files/storage/localFileManager.class.php';
-include_once DP_BASE_DIR.'modules/files/storage/svnFileManager.class.php';
+//include_once DP_BASE_DIR.'modules/files/storage/svnFileManager.class.php';
 
 /**
 * File Class
@@ -332,9 +332,9 @@ class CFile extends CDpObject {
 		$nwords = count( $warr );
 		for ($x=0; $x < $nwords; $x++) {
 			$newword = $warr[$x];
-			if (!ereg('[[:punct:]]', $newword )
+			if (!preg_match('/[[:punct:]]/', $newword )
 				&& strlen( trim( $newword ) ) > 2
-				&& !ereg('[[:digit:]]', $newword )) {
+				&& !preg_match('/[[:digit:]]/', $newword )) {
 				$wordarr[] = array('word' => $newword, 'wordplace' => $x);
 			}
 		}
@@ -534,7 +534,7 @@ class CFile extends CDpObject {
 		$this->_query->leftJoin('contacts', 'b', 'b.contact_id = a.user_contact');
 		$this->_query->addQuery('contact_first_name, contact_last_name');
 		$this->_query->addWhere('a.user_id = ' . $this->file_owner);
-		if ($qid =& $this->_query->exec())
+		if ($qid = $this->_query->exec())
 			$owner = $qid->fields['contact_first_name'] . ' ' . $qid->fields['contact_last_name'];
 		$this->_query->clear();
 		
@@ -551,7 +551,7 @@ class CFile extends CDpObject {
 		$this->_query->addTable('tasks');
 		$this->_query->addQuery('task_name');
 		$this->_query->addWhere('task_id = ' . $this->file_task);
-		if ($qid =& $this->_query->exec()) {
+		if ($qid = $this->_query->exec()) {
 			if ($qid->fields['task_name'])
 				$taskname = $qid->fields['task_name'];
 			else

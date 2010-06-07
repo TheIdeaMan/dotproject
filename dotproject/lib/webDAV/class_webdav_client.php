@@ -184,7 +184,7 @@ class webdav_client {
 
 		 $regs = array();
 		 /*         [1]        [2]        [3]        [4]        [5]        [6]  */
-		 if (ereg('^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z$', $iso8601, $regs)) {
+		 if (preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z$/', $iso8601, $regs)) {
 			 return mktime($regs[4],$regs[5], $regs[6], $regs[2], $regs[3], $regs[1]);
 		 }
 		 // to be done: regex for partial-time...apache webdav mod never returns partial-time
@@ -1095,7 +1095,7 @@ class webdav_client {
 		switch($this->_xmltree[$parser]) {
 			case 'dav::multistatus_dav::response_':
 				// new element in mu
-				$this->_ls_ref =& $this->_ls[$parser][];
+				$this->_ls_ref = $this->_ls[$parser]; // [] used to be on this end of this line...does it matter?
 				break;
 			case 'dav::multistatus_dav::response_dav::href_':
 				$this->_ls_ref_cdata = &$this->_ls_ref['href'];
@@ -1185,7 +1185,7 @@ class webdav_client {
 		switch($this->_xmltree[$parser]) {
 			case 'dav::multistatus_dav::response_':
 				// new element in mu
-				$this->_delete_ref =& $this->_delete[$parser][];
+				$this->_delete_ref = $this->_delete[$parser]; // [] used to be on this end of this line...does it matter?
 				break;
 			case 'dav::multistatus_dav::response_dav::href_':
 				$this->_delete_ref_cdata = &$this->_ls_ref['href'];
@@ -1242,7 +1242,7 @@ class webdav_client {
 		switch($this->_xmltree[$parser]) {
 			case 'dav::prop_dav::lockdiscovery_dav::activelock_':
 				// new element
-				$this->_lock_ref =& $this->_lock[$parser][];
+				$this->_lock_ref = $this->_lock[$parser]; // [] used to be on this end of this line...does it matter?
 				break;
 			case 'dav::prop_dav::lockdiscovery_dav::activelock_dav::locktype_dav::write_':
 				$this->_lock_ref_cdata = &$this->_lock_ref['locktype'];

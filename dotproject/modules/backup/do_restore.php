@@ -7,7 +7,7 @@ if (!defined('DP_BASE_DIR')){
 // Released under GPL version 2 or later
 
 // Restores an XML file.
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! $perms->checkModule('backup', 'edit'))
   $AppUI->redirect('m=public&a=access_denied');
 

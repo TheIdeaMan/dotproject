@@ -264,7 +264,7 @@ function dPgetUsersHash($selected = null, $active_only = true)
 
 	if ($active_only)
 	{
-		$perms = & $AppUI->acl();
+		$perms = $AppUI->acl();
 		foreach ($users as $user_id => $user_data)
 		{
 			if ($perms->isUserPermitted($user_id) != true)
@@ -312,7 +312,7 @@ function dPgetUsers($active_only = true)
 	}
 	if ($active_only)
 	{
-		$perms = & $AppUI->acl();
+		$perms = $AppUI->acl();
 		foreach ($users as $user_id => $user_data)
 		{
 			if ($perms->isUserPermitted($user_id) != true)
@@ -803,11 +803,11 @@ function findTabModules($module, $file = null)
 
 	if (isset($file)) {
 		if (isset($_SESSION['all_tabs'][$module][$file]) && is_array($_SESSION['all_tabs'][$module][$file]))
-			$tabs_array =& $_SESSION['all_tabs'][$module][$file];
+			$tabs_array = $_SESSION['all_tabs'][$module][$file];
 		else
 			return $modlist;
 	} else {
-		$tabs_array =& $_SESSION['all_tabs'][$module];
+		$tabs_array = $_SESSION['all_tabs'][$module];
 	}
 	foreach ($tabs_array as $tab) {
 		if (isset($tab['module']))

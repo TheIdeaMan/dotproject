@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 $AppUI->savePlace();
 
 // pull all the key types
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // Get the permissions for this module
 $canAccess = $perms->checkModule('roles', 'access');
@@ -18,7 +18,7 @@ $canAdd 		= $perms->checkModule('roles', 'add');
 $canEdit 		= $perms->checkModule('roles', 'edit');
 $canDelete 	= $perms->checkModule('roles', 'delete');
 
-$crole =& new CRole;
+$crole = new CRole;
 $roles = $crole->getRoles();
 
 $role_id = dPgetParam( $_GET, 'role_id', 0 );

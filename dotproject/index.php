@@ -28,9 +28,7 @@
 
 // Timings init
 $time = array_sum(explode(' ', microtime()));
-if (function_exists('memory_get_usage')) {
-	$memory_marker = memory_get_usage();
-}
+$memory_marker = memory_get_usage();
 $acltime = 0;
 $dbtime = 0;
 $dbqueries = 0;
@@ -71,7 +69,7 @@ dPsessionStart(array('AppUI'));
 // check if session has previously been initialised
 if (!isset( $_SESSION['AppUI'] ) || isset($_GET['logout'])) {
     if (isset($_GET['logout']) && isset($_SESSION['AppUI']->user_id)) {
-        $AppUI =& $_SESSION['AppUI'];
+        $AppUI = $_SESSION['AppUI'];
         $user_id = $AppUI->user_id;
         $details['name'] = $AppUI->user_first_name . ' ' . $AppUI->user_last_name;
         addHistory('login', $AppUI->user_id, 'logout', $details);
@@ -79,6 +77,5 @@ if (!isset( $_SESSION['AppUI'] ) || isset($_GET['logout'])) {
     }
     $_SESSION['AppUI'] = new CAppUI();
 }
-$AppUI =& $_SESSION['AppUI'];
+$AppUI = $_SESSION['AppUI'];
 $AppUI->init();
-?>

@@ -8,7 +8,7 @@ $company_id = intval( dPgetParam( $_REQUEST, 'company_id', 0 ) );
 $company_name = dPgetParam( $_REQUEST, 'company_name', null );
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! ($canEdit = $perms->checkModuleItem( 'contacts', 'edit', $contact_id )) ) {
 	$AppUI->redirect( "m=public&a=access_denied" );
 }

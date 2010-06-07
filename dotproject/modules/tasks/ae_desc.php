@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 global $tpl, $AppUI, $task_id, $obj, $users, $task_access, $department_selection_list;
 global $task_parent_options, $projects, $task_project, $can_edit_time_information, $tab, $m;
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $tpl->assign('can_edit_time_information', $can_edit_time_information);
 $tpl->assign('task_project', $task_project);

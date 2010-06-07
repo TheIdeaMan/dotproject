@@ -104,7 +104,7 @@ function dPupgrade($from_version, $to_version, $last_updated)
 		case '20050314':
 			// Add the permissions for task_log
 			dPmsg("Adding Task Log permissions");
-			$perms =& new dPacl;
+			$perms = new dPacl;
 			$perms->add_object('app', 'Task Logs', 'task_log', 11, 0, 'axo');
 			$all_mods = $perms->get_group_id('all', null, 'axo');
 			$nonadmin = $perms->get_group_id('non_admin', null, 'axo');

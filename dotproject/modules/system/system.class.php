@@ -113,7 +113,7 @@ class CModule extends CDpObject {
                 print $this->mod_ui_order ;
                 $q->clear();
 
-                $perms =& $GLOBALS['AppUI']->acl();
+                $perms = $GLOBALS['AppUI']->acl();
                 $perms->addModule($this->mod_directory, $this->mod_name);
                 // Determine if it is an admin module or not, then add it to the correct set
                 if (! isset($this->mod_admin))
@@ -139,7 +139,7 @@ class CModule extends CDpObject {
                         return db_error();
                 } else {
                         //remove module permissions from gacl tables
-                        $perms =& $GLOBALS['AppUI']->acl();
+                        $perms = $GLOBALS['AppUI']->acl();
                         $perms->deleteGroupItem($this->mod_directory, (($this->mod_admin)?"admin":"non_admin"));
 												$perms->deleteModuleItems($this->mod_directory);
                         $perms->deleteModule($this->mod_directory);

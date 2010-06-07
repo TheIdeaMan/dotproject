@@ -145,8 +145,8 @@ if($do_report){
 	$ss="'".$start_date->format( FMT_DATETIME_MYSQL )."'";
 	$se="'".$end_date->format( FMT_DATETIME_MYSQL )."'";
 	
-	$proj =& new CProject;
-	$obj =& new CTask;
+	$proj = new CProject;
+	$obj = new CTask;
 	$allowedProjects = $proj->getAllowedSQL($AppUI->user_id, 'task_project');
 	$allowedTasks = $obj->getAllowedSQL($AppUI->user_id);
 	

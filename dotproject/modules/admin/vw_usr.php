@@ -30,7 +30,7 @@ $users = $q->loadList();
 $tab = dPgetParam($_REQUEST, "tab", 0);
 $canLogin = ($tab == 0); // Active = 0, Inactive = 1;
 			
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 foreach ($users as $k => $row)
 {
 	if ($perms->isUserPermitted($row['user_id']) != $canLogin)

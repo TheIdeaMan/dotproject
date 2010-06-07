@@ -27,7 +27,7 @@ if (substr($baseUrl, -1) == '\\') {
 }
 require_once "$baseDir/install/install.inc.php";
 
-$AppUI =& new InstallerUI(); // Fake AppUI class to appease the db_connect utilities.
+$AppUI = new InstallerUI(); // Fake AppUI class to appease the db_connect utilities.
 
 $dbMsg = "";
 $cFileMsg = "Not Created";

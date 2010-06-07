@@ -9,7 +9,7 @@ if (!defined('DP_BASE_DIR')){
 // Take an XML file and restore it to the database overwriting
 // all the data in the database.
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! $perms->checkModule('backup', 'edit'))
   $AppUI->redirect('m=public&a=access_denied');
 $AppUI->savePlace();

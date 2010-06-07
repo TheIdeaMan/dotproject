@@ -12,7 +12,7 @@ if (!defined('DP_BASE_DIR')){
 
 // Completely rewritten for 2.0 by Adam Donnison <ajdonnison@dotproject.net>
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 if (! $perms->checkModule('backup', 'view'))
   $AppUI->redirect('m=public&a=access_denied');

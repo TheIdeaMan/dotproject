@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 $event_id = intval(dPgetParam($_GET, 'event_id', 0));
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canEdit = $perms->checkModuleItem($m, 'edit', $event_id);
 
 // check if this record has dependencies to prevent deletion

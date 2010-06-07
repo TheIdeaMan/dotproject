@@ -59,7 +59,7 @@ $titleBlock->addCell(
 '</form>', '', '', '');
 $titleBlock->show();
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $df = $AppUI->getPref('SHDATEFORMAT');
 $tf = $AppUI->getPref('TIMEFORMAT');

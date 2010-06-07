@@ -12,7 +12,7 @@ $temp_dir = DP_BASE_DIR . '/files/temp';
 $base_url = DP_BASE_URL;
 require( $AppUI->getLibraryClass( 'ezpdf/class.ezpdf' ) );
 
-$pdf =& new Cezpdf($paper='A4',$orientation='landscape');
+$pdf = new Cezpdf($paper='A4',$orientation='landscape');
 $pdf->ezSetCmMargins( 1, 2, 1.5, 1.5 );
 $pdf->selectFont( "$font_dir/Helvetica.afm" );
 
@@ -49,7 +49,7 @@ $options = array(
 );
 
 $hasResources = $AppUI->isActiveModule('resources');
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if ($hasResources)
 	$hasResources = $perms->checkModule('resources', 'view');
 // Build the data to go into the table.
@@ -64,7 +64,7 @@ if ($hasResources)
 $columns[] = "<b>" . $AppUI->_('Finish Date') . "</b>";
 
 // Grab the completed items in the last week
-$q =& new DBQuery;
+$q = new DBQuery;
 $q->addQuery('a.*');
 $q->addQuery('b.user_username');
 if ($project_id==0) {$q->addQuery('c.project_name');}
@@ -130,7 +130,7 @@ if ($hasResources && count($tasks)) {
 
 // Build the data columns
 foreach ($tasks as $task_id => $detail) {
-	$row =& $pdfdata[];
+	$row = $pdfdata[];
 	if ($project_id==0) {$row[] = $detail['project_name'];}
 	$row[] = $detail['task_name'];
 	$row[] = $detail['user_username'];

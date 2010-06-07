@@ -9,7 +9,7 @@ $ci = dPgetParam($_GET, 'ci', 0) == 1 ? true : false;
 $preserve = dPgetConfig('files_ci_preserve_attr');
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canEdit = $perms->checkModuleItem( $m, 'edit', $file_id );
 if (!$canEdit) {
 	$AppUI->redirect( "m=public&a=access_denied" );
@@ -33,7 +33,7 @@ $file_parent = intval( dPgetParam( $_GET, 'file_parent', 0 ) );
 $file_project = intval( dPgetParam( $_GET, 'project_id', 0 ) );
 $file_helpdesk_item = intval( dPgetParam( $_GET, 'file_helpdesk_item', 0 ) );
 
-$q =& new DBQuery;
+$q = new DBQuery;
 
 // check if this record has dependencies to prevent deletion
 $msg = '';

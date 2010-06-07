@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 $del = dPgetParam($_POST, 'del', 0);
 
-$role =& new CRole();
+$role = new CRole();
 
 if (($msg = $role->bind( $_POST ))) {
 	$AppUI->setMsg( $msg, UI_MSG_ERROR );

@@ -8,7 +8,7 @@ $log_task_task = dPgetParam($_POST, 'log_task_task', 0);
 $log_task_parent = dPgetParam($_POST, 'log_task_parent', 0);
 $order = dPgetParam($_POST, 'order', 'task_name');
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if (! $perms->checkModule('tasks', 'view'))
 	redirect('m=public&a=access_denied');
 ?>
@@ -220,7 +220,7 @@ if ($do_report)
 	if ($log_userfilter)
 		$q->addWhere("task_log_creator = $log_userfilter");
 
-	$proj =& new CProject;
+	$proj = new CProject;
 	$allowedProjects = $proj->getAllowedSQL($AppUI->user_id, 'task_project');
 	if (count($allowedProjects))
 		$q->addWhere(implode(" AND ", $allowedProjects));
@@ -353,7 +353,7 @@ if ($do_report)
 		$font_dir = DP_BASE_DIR . '/lib/ezpdf/fonts';
 		require( $AppUI->getLibraryClass( 'ezpdf/class.ezpdf' ) );
 
-		$pdf =& new Cezpdf();
+		$pdf = new Cezpdf();
 		$pdf->ezSetCmMargins( 1, 2, 1.5, 1.5 );
 		$pdf->selectFont( "$font_dir/Helvetica.afm" );
 

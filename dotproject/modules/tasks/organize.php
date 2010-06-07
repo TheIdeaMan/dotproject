@@ -5,7 +5,7 @@ if (!defined('DP_BASE_DIR')){
 
 global $tasks, $now;
 // Project status from sysval, defined as a constant
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $project_id = intval( dPgetParam( $_GET, 'project_id', 0 ) );
 //$date       = intval( dPgetParam( $_GET, 'date', '' ) );
@@ -38,7 +38,7 @@ if ($selected && count( $selected )) {
 
 	foreach ($selected as $key => $val)
 	{
-		$t = &new CTask();
+		$t = new CTask();
 		$t->load($val);
 		if ( isset($_POST['include_children']) && $_POST['include_children'])
 			$children = $t->getDeepChildren();
@@ -104,8 +104,8 @@ if ($selected && count( $selected )) {
 
 $AppUI->savePlace();
 
-$proj =& new CProject;
-$tobj =& new CTask;
+$proj = new CProject;
+$tobj = new CTask;
 
 $allowedProjects = $proj->getAllowedSQL($AppUI->user_id);
 $allowedTasks = $tobj->getAllowedSQL($AppUI->user_id, 'task_id');

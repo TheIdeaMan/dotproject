@@ -42,7 +42,7 @@ if ($message_parent != -1)
     echo db_error();
     $last_message_info = $q->fetchRow();
     if (!$last_message_info) { // if it's first response, use original message
-        $last_message_info =& $message_info;
+        $last_message_info = $message_info;
         $last_message_info["message_body"] = wordwrap(@$last_message_info["message_body"], 50, "\n> ");
     }
     else {

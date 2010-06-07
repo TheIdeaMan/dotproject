@@ -9,7 +9,7 @@ $showEditCheckbox = true;
 // Project status from sysval, defined as a constant
 $project_on_hold_status = 4;
 $project_template_status = 6;
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 if (isset( $_GET['tab'] ))
 	$AppUI->setState( 'ToDoTab', $_GET['tab'] );
@@ -91,8 +91,8 @@ if (is_array($selected) && count( $selected )) {
 
 $AppUI->savePlace();
 
-$proj =& new CProject;
-$tobj =& new CTask;
+$proj = new CProject;
+$tobj = new CTask;
 
 $allowedProjects = $proj->getAllowedSQL($AppUI->user_id);
 $allowedTasks = $tobj->getAllowedSQL($AppUI->user_id, 'ta.task_id');

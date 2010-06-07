@@ -10,7 +10,7 @@ $titleBlock->show();
 
 if ($search_keyword != NULL && $search_keyword != '')
 { 
-	$perms = &$AppUI->acl();
+	$perms = $AppUI->acl();
 
 	$modules = array(
 	'projects' => 'CProject',

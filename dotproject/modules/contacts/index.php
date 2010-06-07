@@ -9,7 +9,7 @@ if (! $canAccess) {
 	$AppUI->redirect('m=public&a=access_denied');
 }
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // To configure an aditional filter to use in the search string
 $additional_filter = "";
@@ -58,7 +58,7 @@ $showfields = array(
 );
 
 require_once $AppUI->getModuleClass('companies');
-$company =& new CCompany;
+$company = new CCompany;
 $allowedCompanies = $company->getAllowedSQL($AppUI->user_id);
 
 // assemble the sql statement

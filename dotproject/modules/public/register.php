@@ -16,9 +16,9 @@ if ($register)
 		exit;
 	}
 
-	$perms =& $AppUI->acl();
+	$perms = $AppUI->acl();
 	$user_roles = $perms->getUserRoles($user_id);
-	$crole =& new CRole;
+	$crole = new CRole;
 	$roles = $crole->getRoles();
 	foreach ($roles as $role)
 		if (strtolower($role['name']) == 'guest')

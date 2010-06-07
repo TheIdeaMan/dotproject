@@ -102,7 +102,7 @@ function InstallSplitSql($sql, $last_update) {
     return $ret;
   }
  }
- $sql = ereg_replace("\n#[^\n]*\n", "\n", $sql);
+ $sql = preg_replace("/\n#[^\n]*\n/", "\n", $sql);
 
  $in_string = false;
 

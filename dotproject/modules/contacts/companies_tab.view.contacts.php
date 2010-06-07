@@ -17,7 +17,7 @@ $rows = $q->loadList();
 
 foreach ($rows as $key => $row)
 {
-	$contact =& new CContact;
+	$contact = new CContact;
 	$contact->bind($row);
 	$dept_detail = $contact->getDepartmentDetails();
 	$rows[$key]['dept_name'] = $dept_detail['dept_name'];

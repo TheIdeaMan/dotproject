@@ -47,7 +47,7 @@ class CDpObject {
 		$this->_tbl_key = $key;
 		$this->_tbl_name = substr($key, 0, -2) . 'name';
 		$this->_prefix = dPgetConfig('dbprefix', '');
-		$this->_query =& new DBQuery;
+		$this->_query = new DBQuery;
 	} // }}} constructor
 
 /** Get the last error message
@@ -234,7 +234,7 @@ class CDpObject {
 	{
 		global $AppUI;
 		
-		$perms =& $AppUI->acl();
+		$perms = $AppUI->acl();
 		$k = $this->_tbl_key;
 		if (!$perms->checkModuleItem($this->_tbl, $type, $this->$k)) 
 		{
@@ -264,7 +264,7 @@ class CDpObject {
 		global $AppUI;
 
 		// First things first.  Are we allowed to delete?
-		$acl =& $AppUI->acl();
+		$acl = $AppUI->acl();
 		if ( ! $acl->checkModuleItem($this->_tbl, 'delete', $oid)) {
 		  $msg = $AppUI->_( 'noDeletePermission' );
 		  return false;
@@ -353,7 +353,7 @@ class CDpObject {
 		$uid = intval( $uid );
 		$uid || exit ("FATAL ERROR<br />" . get_class( $this ) . "::getDeniedRecords failed, user id = 0" );
 
-		$perms =& $GLOBALS['AppUI']->acl();
+		$perms = $GLOBALS['AppUI']->acl();
 		return $perms->getDeniedItems($this->_tbl, $uid);
 	}
 
@@ -368,11 +368,11 @@ class CDpObject {
  */
 	function getAllowedRecords( $uid, $fields='*', $orderby='', $index=null, $extra=null ) 
 	{
-		$perms =& $GLOBALS['AppUI']->acl();
+		$perms = $GLOBALS['AppUI']->acl();
 		$uid = intval( $uid );
 		$uid || exit ("FATAL ERROR<br />" . get_class( $this ) . "::getAllowedRecords failed" );
-		$deny =& $perms->getDeniedItems( $this->_tbl, $uid );
-		$allow =& $perms->getAllowedItems($this->_tbl, $uid);
+		$deny = $perms->getDeniedItems( $this->_tbl, $uid );
+		$allow = $perms->getAllowedItems($this->_tbl, $uid);
 		if (! $perms->checkModule($this->_tbl, "view", $uid )) {
 		  if (! count($allow))
 		    return array();	// No access, and no allow overrides, so nothing to show.
@@ -413,11 +413,11 @@ class CDpObject {
    */
   function getEdittableRecords( $uid, $fields='*', $orderby='', $index=null, $extra=null ) 
   {
-    $perms =& $GLOBALS['AppUI']->acl();
+    $perms = $GLOBALS['AppUI']->acl();
     $uid = intval( $uid );
     $uid || exit ("FATAL ERROR<br />" . get_class( $this ) . "::getAllowedRecords failed" );
-    $deny =& $perms->getDeniedItems( $this->_tbl, $uid );
-    $allow =& $perms->getEdittableItems($this->_tbl, $uid);
+    $deny = $perms->getDeniedItems( $this->_tbl, $uid );
+    $allow = $perms->getEdittableItems($this->_tbl, $uid);
     if (! $perms->checkModule($this->_tbl, "view", $uid )) {
       if (! count($allow))
         return array(); // No access, and no allow overrides, so nothing to show.
@@ -456,11 +456,11 @@ class CDpObject {
 	 */
 	function getAllowedSQL( $uid, $index = null )
 	{
-		$perms =& $GLOBALS['AppUI']->acl();
+		$perms = $GLOBALS['AppUI']->acl();
 		$uid = intval( $uid );
 		$uid || exit ("FATAL ERROR<br />" . get_class( $this ) . "::getAllowedSQL failed" );
-		$deny =& $perms->getDeniedItems( $this->_tbl, $uid );
-		$allow =& $perms->getAllowedItems($this->_tbl, $uid);
+		$deny = $perms->getDeniedItems( $this->_tbl, $uid );
+		$allow = $perms->getAllowedItems($this->_tbl, $uid);
 		if (! $perms->checkModule($this->_tbl, "view", $uid )) {
 		  if (! count($allow))
 		    return array("1=0");	// No access, and no allow overrides, so nothing to show.
@@ -491,11 +491,11 @@ class CDpObject {
 	 */
 	function setAllowedSQL($uid, &$query, $index = null, $key = null)
 	{
-		$perms =& $GLOBALS['AppUI']->acl();
+		$perms = $GLOBALS['AppUI']->acl();
 		$uid = intval( $uid );
 		$uid || exit ("FATAL ERROR<br />" . get_class( $this ) . "::getAllowedSQL failed" );
-		$deny =& $perms->getDeniedItems($this->_tbl, $uid );
-		$allow =& $perms->getAllowedItems($this->_tbl, $uid);
+		$deny = $perms->getDeniedItems($this->_tbl, $uid );
+		$allow = $perms->getAllowedItems($this->_tbl, $uid);
 		// Make sure that we add the table otherwise dependencies break
     if (! $key) {
       $key = substr($this->_tbl, 0, 2);

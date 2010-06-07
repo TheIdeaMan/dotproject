@@ -7,7 +7,7 @@ global $company_id;
 $company_id = intval( dPgetParam( $_GET, "company_id", 0 ) );
 
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canRead = $perms->checkModuleItem( $m, 'view', $company_id );
 $canEdit = $perms->checkModuleItem( $m, 'edit', $company_id );
 

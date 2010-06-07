@@ -240,7 +240,7 @@ function chPriority(user_id) {
 </table>
 </form>
 <?php
-echo $AppUI->_('P').'&nbsp;=&nbsp;'.$AppUI->_('User specific Task Priority');
+echo $AppUI->_('P').'&nbsp;=nbsp;'.$AppUI->_('User specific Task Priority');
 if($do_report){
 	// get Users with all Allocation info (e.g. their freeCapacity)
 	$tempoTask = new CTask();
@@ -261,8 +261,8 @@ if($do_report){
 	$ss='"'.$start_date->format( FMT_DATETIME_MYSQL ).'"';
 	$se='"'.$end_date->format( FMT_DATETIME_MYSQL ).'"';
 
-	$proj =& new CProject;
-	$obj =& new CTask;
+	$proj = new CProject;
+	$obj = new CTask;
 	$allowedProjects = $proj->getAllowedSQL($AppUI->user_id, 'task_project');
 	$allowedTasks = $obj->getAllowedSQL($AppUI->user_id);
 	

@@ -153,7 +153,7 @@ class CAppUI {
 		$tpl = $this->getTemplate();
 		$this->checkStyle();
 		require_once DP_BASE_DIR . '/includes/permissions.php';
-		$perms =& $this->acl();
+		$perms = $this->acl();
 		
 		require_once($this->getSystemClass('date'));
 		require_once($this->getSystemClass('dp'));
@@ -316,7 +316,7 @@ class CAppUI {
 	 */
 	function initTypeDownload()
 	{
-		$perms =& $this->acl();
+		$perms = $this->acl();
 		$canRead = $perms->checkModule('files', 'view');
 		if (!$canRead) {
 			$this->redirect('m=public&a=access_denied');
@@ -328,9 +328,9 @@ class CAppUI {
 			// projects that are denied access
 			require_once($this->getModuleClass('projects'));
 			require_once($this->getModuleClass('files'));
-			$project =& new CProject;
+			$project = new CProject;
 			$allowedProjects = $project->getAllowedRecords($this->user_id, 'project_id, project_name');
-			$fileclass =& new CFile;
+			$fileclass = new CFile;
 			$fileclass->load($file_id);
 			$allowedFiles = $fileclass->getAllowedRecords($this->user_id, 'file_id, file_name');
 			
@@ -362,7 +362,7 @@ class CAppUI {
 		// Don't output anything. Usefull for fileviewer.php, gantt.php, etc.
 		$suppressHeaders = dPgetParam($_GET, 'suppressHeaders', false);
 		$dialog = dPgetParam($_GET, 'dialog', false);
-		$perms = & $this->acl();
+		$perms = $this->acl();
 		
 		// TODO: canRead/Edit assignements should be moved into each file
 		
@@ -377,7 +377,7 @@ class CAppUI {
 			$this->redirect('m=public&a=access_denied');
 		}
 		
-		$all_tabs = & $this->initTabs($m);	
+		$all_tabs = $this->initTabs($m);	
 		
 		// All settings set. Initialise template (set global variables)
 		$tpl->init();
@@ -485,7 +485,7 @@ class CAppUI {
 	function initTabs($m)
 	{
 		if (!isset($_SESSION['all_tabs'][$m])) {
-			$perms =& $this->acl();
+			$perms = $this->acl();
 			// For some reason on some systems if you don't set this up
 			// first you get recursive pointers to the all_tabs array, creating
 			// phantom tabs.
@@ -493,7 +493,7 @@ class CAppUI {
 				$_SESSION['all_tabs'] = array();
 		
 			$_SESSION['all_tabs'][$m] = array();
-			$all_tabs =& $_SESSION['all_tabs'][$m];
+			$all_tabs = $_SESSION['all_tabs'][$m];
 			foreach ($this->getActiveModules() as $dir => $module) {
 				if (!$perms->checkModule($dir, 'access')) {
 					continue;
@@ -511,10 +511,10 @@ class CAppUI {
 						if (!isset($all_tabs[$file]))
 							$all_tabs[$file] = array();
 		
-						$arr =& $all_tabs[$file];
+						$arr = $all_tabs[$file];
 						$name = $nameparts[2];
 					} else {
-						$arr =& $all_tabs;
+						$arr = $all_tabs;
 						$name = $nameparts[1];
 					}
 					$arr[] = array(
@@ -528,7 +528,7 @@ class CAppUI {
 				}
 			}
 		} else {
-			$all_tabs =& $_SESSION['all_tabs'][$m];
+			$all_tabs = $_SESSION['all_tabs'][$m];
 		}
 		
 		return $all_tabs;
@@ -961,11 +961,11 @@ class CAppUI {
 			die("You have chosen to log in using an unsupported or disabled login method");
 		}
 
-		$auth =& getauth($auth_method);
+		$auth = getauth($auth_method);
 		if (!$auth->supported()) {
 			//Try SQL if auth method unsupported by this system.
 			if (dPgetConfig('ldap_allow_login') == true) {
-				$auth =& getauth('sql');
+				$auth = getauth('sql');
 			}
 			else
 			{
@@ -985,7 +985,7 @@ class CAppUI {
 		// Now that the password has been checked, see if they are allowed to
 		// access the system
 		if (! isset($GLOBALS['acl'])) {
-		  $GLOBALS['acl'] =& new dPacl;
+		  $GLOBALS['acl'] = new dPacl;
     	}
 		if ( ! $GLOBALS['acl']->checkLogin($user_id)) {
 		  dprint(__FILE__, __LINE__, 1, "Permission check failed");
@@ -1143,7 +1143,7 @@ class CAppUI {
 		$q->addWhere('mod_type != \'utility\'');
 		$q->addOrder('mod_ui_order');
 		$activeModules = $q->loadList();
-		$perms = & $this->acl();
+		$perms = $this->acl();
 		foreach ($activeModules as $mod) {
 			if ($perms->checkModule($mod['mod_directory'], 'view')) {
 				$viewableModules[] = $mod;
@@ -1173,7 +1173,7 @@ class CAppUI {
 	function &acl()
 	{
 		if (! isset($GLOBALS['acl'])){
-			$GLOBALS['acl'] =& new dPacl;
+			$GLOBALS['acl'] = new dPacl;
 	  	}
 	  	return $GLOBALS['acl'];
 	}
@@ -1392,12 +1392,12 @@ the active tab, and the selected tab **/
 
 		if ($file) {
 			if (isset($_SESSION['all_tabs'][$module][$file]) && is_array($_SESSION['all_tabs'][$module][$file])) {
-				$tab_array =& $_SESSION['all_tabs'][$module][$file];
+				$tab_array = $_SESSION['all_tabs'][$module][$file];
 			} else {
 				return false;
 			}
 		} else {
-			$tab_array =& $_SESSION['all_tabs'][$module];
+			$tab_array = $_SESSION['all_tabs'][$module];
 		}
 		$tab_count = 0;
 		foreach ($tab_array as $tab_elem) {
@@ -1422,11 +1422,11 @@ the active tab, and the selected tab **/
 
 		if (isset($a)) {
 			if (isset($_SESSION['all_tabs'][$m][$a]) && is_array($_SESSION['all_tabs'][$m][$a]))
-				$tab_array =& $_SESSION['all_tabs'][$m][$a];
+				$tab_array = $_SESSION['all_tabs'][$m][$a];
 			else
-				$tab_array =& $_SESSION['all_tabs'][$m];
+				$tab_array = $_SESSION['all_tabs'][$m];
 		} else {
-			$tab_array =& $_SESSION['all_tabs'][$m];
+			$tab_array = $_SESSION['all_tabs'][$m];
 		}
 
 		list($file, $name) = $this->tabs[$tab];

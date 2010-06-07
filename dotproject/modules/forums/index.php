@@ -14,7 +14,7 @@ if (isset( $_GET['orderby'] )) {
 $orderby         = $AppUI->getState( 'ForumIdxOrderBy' ) ? $AppUI->getState( 'ForumIdxOrderBy' ) : 'forum_name';
 $orderdir        = $AppUI->getState( 'ForumIdxOrderDir' ) ? $AppUI->getState( 'ForumIdxOrderDir' ) : 'asc';
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 $df = $AppUI->getPref( 'SHDATEFORMAT' );
 $tf = $AppUI->getPref( 'TIMEFORMAT' );
@@ -22,9 +22,9 @@ $tf = $AppUI->getPref( 'TIMEFORMAT' );
 $f = dPgetParam( $_POST, 'f', 0 );
 
 
-$forum =& new CForum;
+$forum = new CForum;
 require_once $AppUI->getModuleClass('projects');
-$project =& new CProject;
+$project = new CProject;
 
 $max_msg_length = 30;
 

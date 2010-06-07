@@ -6,7 +6,7 @@ if (!defined('DP_BASE_DIR')){
 $link_id = intval( dPgetParam( $_GET, 'link_id', 0 ) );
  
 // check permissions for this record
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $canEdit = $perms->checkModuleItem( $m, 'edit', $link_id );
 if (!$canEdit) {
 	$AppUI->redirect( "m=public&a=access_denied" );

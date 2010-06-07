@@ -27,7 +27,7 @@ $department = dPgetParam($_REQUEST, 'department', 0);
 $showLabels = dPgetParam($_REQUEST, 'showLabels', 0);
 $showInactive = dPgetParam($_REQUEST, 'showInactive', 0);
 
-$pjobj =& new CProject;
+$pjobj = new CProject;
 $working_hours = dPgetConfig('daily_working_hours');
 
 // pull valid projects and their percent complete information

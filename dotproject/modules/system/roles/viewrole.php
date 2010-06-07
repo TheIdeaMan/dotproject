@@ -4,7 +4,7 @@ if (!defined('DP_BASE_DIR')){
 }
 
 $AppUI->savePlace();
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 $role_id = $_GET['role_id'];
 $role = $perms->getRole($role_id);
 

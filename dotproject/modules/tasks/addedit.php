@@ -9,7 +9,7 @@ if (!defined('DP_BASE_DIR')){
 global $l10n, $projTasks, $all_tasks, $parents, $task_parent_options, $task_parent;
 global $task_id;
 $task_id = intval( dPgetParam( $_REQUEST, 'task_id', 0 ) );
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 
 // load the record data
 global $obj;
@@ -211,7 +211,7 @@ global $can_edit_time_information;
 $can_edit_time_information = $obj->canUserEditTimeInformation();
 //get list of projects, for task move drop down list.
 //require_once $AppUI->getModuleClass('projects');
-//$project =& new CProject;
+//$project = new CProject;
 $pq = new DBQuery;
 $pq->addQuery('project_id, project_name');
 $pq->addTable('projects');
@@ -242,7 +242,7 @@ if (isset($_GET['tab'])) {
 }
 
 $tab = $AppUI->getState('TaskAeTabIdx', 0);
-$tabBox =& new CTabBox('?m=tasks&amp;a=addedit&amp;task_id='.$task_id, '', $tab, '');
+$tabBox = new CTabBox('?m=tasks&amp;a=addedit&amp;task_id='.$task_id, '', $tab, '');
 $tabBox->add(DP_BASE_DIR.'/modules/tasks/ae_desc', 'Details');
 $tabBox->add(DP_BASE_DIR.'/modules/tasks/ae_dates', 'Dates');
 $tabBox->add(DP_BASE_DIR.'/modules/tasks/ae_depend', 'Dependencies');

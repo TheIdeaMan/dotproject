@@ -4,9 +4,9 @@ if (!defined('DP_BASE_DIR')){
 }
 
 global $tabbed, $currentTabName, $currentTabId, $AppUI;
-$obj =& new CResource;
+$obj = new CResource;
 
-$query =& new DBQuery;
+$query = new DBQuery;
 $obj->setAllowedSQL($AppUI->user_id, $query);
 $query->addTable($obj->_tbl);
 if (!$tabbed)
@@ -14,7 +14,7 @@ if (!$tabbed)
 
 if ($currentTabId)
   $query->addWhere('resource_type = ' . $_SESSION['resource_type_list'][$currentTabId]['resource_type_id']);
-$res =& $query->exec();
+$res = $query->exec();
 ?>
 <table width='100%' border='0' cellpadding='2' cellspacing='1' class='tbl'>
 <tr>

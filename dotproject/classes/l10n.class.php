@@ -137,7 +137,7 @@ class CLocalisation
 		global $AppUI;
 		
 		if ( isset($_SESSION['LANGUAGES'])) {
-			$LANGUAGES =& $_SESSION['LANGUAGES'];
+			$LANGUAGES = $_SESSION['LANGUAGES'];
 		} else {
 			$LANGUAGES = array();
 			$langs = $AppUI->readDirs('locales');
@@ -146,7 +146,7 @@ class CLocalisation
 					include_once DP_BASE_DIR."/locales/$lang/lang.php";
 				}
 			}
-			@$_SESSION['LANGUAGES'] =& $LANGUAGES;
+			@$_SESSION['LANGUAGES'] = $LANGUAGES;
 		}
 		
 		return $LANGUAGES;
@@ -233,7 +233,7 @@ class CLocalisation
 			$translations = array_merge($translations, file(DP_BASE_DIR . "/locales/$locale/$m.inc"));
 		}
 	
-		//$all_tabs =& $_SESSION['all_tabs'][$m];
+		//$all_tabs = $_SESSION['all_tabs'][$m];
 		if ($all_tabs)
 		{
 		foreach($all_tabs as $key => $tab)

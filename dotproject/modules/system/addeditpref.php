@@ -37,7 +37,7 @@ else
 	$user = 'Default';
 
 $titleBlock = new CTitleBlock( 'Edit User Preferences', 'myevo-weather.png', $m, "$m.$a" );
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 if ($perms->checkModule('system', 'edit')) {
 	$titleBlock->addCrumb('?m=system', 'system admin');
 	$titleBlock->addCrumb('?m=system&amp;a=systemconfig', 'system configuration');

@@ -32,7 +32,7 @@ class CRole {
 	function CRole( $name='', $description='') {
 		$this->role_name = $name;
 		$this->role_description = $description;
-		$this->perms =& $GLOBALS['AppUI']->acl();
+		$this->perms = $GLOBALS['AppUI']->acl();
 	}
 
 	function bind( $hash ) {
@@ -85,7 +85,7 @@ class CRole {
 
 	function __wakeup()
 	{
-		$this->perms =& $GLOBALS['AppUI']->acl();
+		$this->perms = $GLOBALS['AppUI']->acl();
 	}
 
 	/**

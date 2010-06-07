@@ -100,7 +100,7 @@ if (isset($_POST['show_task_options'])) {
 $showIncomplete = $AppUI->getState('TaskListShowIncomplete', 0);
 
 require_once $AppUI->getModuleClass('projects');
-$project =& new CProject;
+$project = new CProject;
 $allowedProjects = $project->getAllowedSQL($AppUI->user_id);
 $working_hours = dPgetConfig('daily_working_hours', 8);
 
@@ -285,7 +285,7 @@ if (count($allowedProjects)) {
 	$q->addWhere($allowedProjects);
 }
 
-$obj =& new CTask;
+$obj = new CTask;
 $allowedTasks = $obj->getAllowedSQL($AppUI->user_id, 'tasks.task_id');
 if ( count($allowedTasks)) {
 	$q->addWhere($allowedTasks);

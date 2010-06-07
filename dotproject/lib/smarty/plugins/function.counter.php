@@ -31,7 +31,7 @@ function smarty_function_counter($params, &$smarty)
             'count'=>1
             );
     }
-    $counter =& $counters[$name];
+    $counter = $counters[$name];
 
     if (isset($params['start'])) {
         $counter['start'] = $counter['count'] = (int)$params['start'];

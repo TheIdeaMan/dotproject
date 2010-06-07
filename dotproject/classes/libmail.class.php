@@ -430,7 +430,7 @@ function SMTPSend()
     // Start the connection to the server
     $error_number = 0;
     $error_message = '';
-    $headers =& $this->xheaders;
+    $headers = $this->xheaders;
 
     $this->socket = fsockopen($this->host, $this->port, $error_number, $error_message, $this->timeout);
     if (! $this->socket) {

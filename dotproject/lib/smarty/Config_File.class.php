@@ -276,7 +276,7 @@ class Config_File {
         $config_data['vars'] = array();
 
         /* reference to fill with data */
-        $vars =& $config_data['vars'];
+        $vars = $config_data['vars'];
 
         /* parse file line by line */
         preg_match_all('!^.*\r?\n?!m', $contents, $match);
@@ -302,7 +302,7 @@ class Config_File {
                 }
                 if (!isset($config_data['sections'][$section_name]))
                     $config_data['sections'][$section_name] = array('vars' => array());
-                $vars =& $config_data['sections'][$section_name]['vars'];
+                $vars = $config_data['sections'][$section_name]['vars'];
                 continue;
             }
 

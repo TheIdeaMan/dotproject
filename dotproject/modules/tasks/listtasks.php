@@ -3,7 +3,7 @@ if (!defined('DP_BASE_DIR')){
 	die('You should not access this file directly');
 }
 
-$perms =& $AppUI->acl();
+$perms = $AppUI->acl();
 global $tpl;
 if (! $perms->checkModule('tasks', 'view'))
 	$AppUI->redirect('m=public&a=access_denied');

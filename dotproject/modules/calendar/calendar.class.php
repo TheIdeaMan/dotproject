@@ -592,7 +592,7 @@ class CEvent extends CDpObject {
 			$user_id = $AppUI->user_id;
 		}
 
-		$project =& new CProject;
+		$project = new CProject;
 		$allowedProjects = $project->getAllowedSQL($user_id, 'event_project');
 		
 		//do similiar actions for recurring and non-recurring events
@@ -815,10 +815,10 @@ class CEvent extends CDpObject {
 	  $time_format = $AppUI->getPref('TIMEFORMAT');
 	  $fmt = "$date_format $time_format";
 
-	  $start_date =& new CDate($this->event_start_date);
-	  $end_date =& new CDate($this->event_end_date);
+	  $start_date = new CDate($this->event_start_date);
+	  $end_date = new CDate($this->event_end_date);
 
-	  $mail =& new Mail;
+	  $mail = new Mail;
 	  $type = $update ? $AppUI->_('Updated') : $AppUI->_('New');
 	  if ($clash) {
 		$mail->Subject($AppUI->_('Requested Event') . ': ' . $this->event_title, $locale_char_set);
@@ -948,8 +948,8 @@ class CEvent extends CDpObject {
 	  if (! count($users))
 		return false;
 
-	  $start_date =& new CDate($this->event_start_date);
-	  $end_date =& new CDate($this->event_end_date);
+	  $start_date = new CDate($this->event_start_date);
+	  $end_date = new CDate($this->event_end_date);
 
 	  // Now build a query to find matching events.
 		$q	= new DBQuery;
@@ -1262,8 +1262,8 @@ class vCalendar {
 			$q->addWhere('user_id ='.$e['event_owner'] );
 			$q->loadObject($owner);	
 
-			$start_date =& new CDate($e['event_start_date']);
-			$end_date =& new CDate($e['event_end_date']);	
+			$start_date = new CDate($e['event_start_date']);
+			$end_date = new CDate($e['event_end_date']);	
 			
 			// create vEvent String	
 			$this->addSum($e['event_title']);
