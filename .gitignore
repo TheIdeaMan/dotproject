@@ -1,3 +1,7 @@
 dotproject/includes/config.php
 dotproject/files/cache/phpgacl/*
 dotproject/files/cache/smarty_templates/*
+.DS_Store
+.buildpath
+.project
+.settings
